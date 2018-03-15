@@ -67,7 +67,7 @@ public class GameMenu {
     private void setKindGame() {
         log.info("Выберите вид игры:");
         log.info("1 - Игра до определенного количества раздач");
-        log.info("2  - Игра до определенного количества суммарных очков в пуле");
+        log.info("2 - Игра до определенного количества суммарных очков в пуле");
         Scanner scanner = new Scanner(System.in);
         int kind = scanner.nextInt();
         switch(kind) {
