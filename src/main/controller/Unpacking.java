@@ -21,7 +21,7 @@ public class Unpacking implements GameStrategy {
             {
                 if (mmm == 0) {
                     log.info("---------------------------");
-                    System.out.println("Raund " + mmm);
+                    log.info("Raund " + mmm);
                     actionOfBotsZiroOne(distributor, bot1, bot2, bot3, log);
                     mmm++;
                     break label;
@@ -29,21 +29,21 @@ public class Unpacking implements GameStrategy {
                 if (mmm == 1) {
                     if (bot1.isWinnerOneStep()) {
                         log.info("---------------------------");
-                        System.out.println("Raund " + mmm);
+                        log.info("Raund " + mmm);
                         actionOfBotsZiroOne(distributor,bot1, bot2, bot3, log);
                         mmm++;
                         break label;
                     }
                     if (bot2.isWinnerOneStep()) {
                         log.info("---------------------------");
-                        System.out.println("Raund " + mmm);
+                        log.info("Raund " + mmm);
                         actionOfBotsZiroOne(distributor,bot2, bot1, bot3, log);
                         mmm++;
                         break label;
                     }
                     if (bot3.isWinnerOneStep()) {
                         log.info("---------------------------");
-                        System.out.println("Raund " + mmm);
+                        log.info("Raund " + mmm);
                         actionOfBotsZiroOne(distributor,bot3, bot1, bot2, log);
                         mmm++;
                         break label;
@@ -51,21 +51,21 @@ public class Unpacking implements GameStrategy {
                 }
                 if (bot1.isWinnerOneStep()) {
                     log.info("---------------------------");
-                    System.out.println("Raund " + mmm);
+                    log.info("Raund " + mmm);
                     actionOfBots(bot1, bot2, bot3, log);
                     mmm++;
                     break label;
                 }
                 if (bot2.isWinnerOneStep()) {
                     log.info("---------------------------");
-                    System.out.println("Raund " + mmm);
+                    log.info("Raund " + mmm);
                     actionOfBots(bot2, bot1, bot3, log);
                     mmm++;
                     break label;
                 }
                 if (bot3.isWinnerOneStep()) {
                     log.info("---------------------------");
-                    System.out.println("Raund " + mmm);
+                    log.info("Raund " + mmm);
                     actionOfBots(bot3, bot1, bot2, log);
                     mmm++;
                     break label;
@@ -104,7 +104,7 @@ public class Unpacking implements GameStrategy {
         card1.setColor(bot1.getCards().get(m).getColor());
         card1.setValue(bot1.getCards().get(m).getValue());
         bot1.getCards().remove(m);
-        System.out.println(bot1.getName() + " Пололожил " + card1.getCard(card1));
+        log.info(bot1.getName() + " Пололожил " + card1.getCard(card1));
         int i = 0;
         first:
         {
@@ -122,7 +122,7 @@ public class Unpacking implements GameStrategy {
         card2.setColor(bot2.getCards().get(i).getColor());
         card2.setValue(bot2.getCards().get(i).getValue());
         bot2.getCards().remove(i);
-        System.out.println(bot2.getName() + " Пололожил " + card2.getCard(card2));
+        log.info(bot2.getName() + " Пололожил " + card2.getCard(card2));
         int k = 0;
         second:
         {
@@ -139,25 +139,25 @@ public class Unpacking implements GameStrategy {
         card3.setColor(bot3.getCards().get(k).getColor());
         card3.setValue(bot3.getCards().get(k).getValue());
         bot3.getCards().remove(k);
-        System.out.println(bot3.getName() + " Пололожил " + card3.getCard(card3));
+        log.info(bot3.getName() + " Пололожил " + card3.getCard(card3));
 
         if (card1.getColor() == card2.getColor() & card1.getColor() == card3.getColor()) {
             if (card1.getValue() > card2.getValue() & card1.getValue() > card3.getValue()) {
-                System.out.println(bot1.getName() + " Забрал взятку ");
+                log.info(bot1.getName() + " Забрал взятку ");
                 bot1.setKolvovziatok(bot1.getKolvovziatok() + 1);
                 bot1.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
                 bot3.setWinnerOneStep(false);
             }
             if (card2.getValue() > card1.getValue() & card2.getValue() > card3.getValue()) {
-                System.out.println(bot2.getName() + " Забрал взятку ");
+                log.info(bot2.getName() + " Забрал взятку ");
                 bot2.setKolvovziatok(bot2.getKolvovziatok() + 1);
                 bot2.setWinnerOneStep(true);
                 bot1.setWinnerOneStep(false);
                 bot3.setWinnerOneStep(false);
             }
             if (card3.getValue() > card1.getValue() & card3.getValue() > card2.getValue()) {
-                System.out.println(bot3.getName() + " Забрал взятку ");
+                log.info(bot3.getName() + " Забрал взятку ");
                 bot3.setKolvovziatok(bot3.getKolvovziatok() + 1);
                 bot3.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
@@ -166,14 +166,14 @@ public class Unpacking implements GameStrategy {
         }
         if (card1.getColor() != card2.getColor() & card1.getColor() == card3.getColor()) {
             if (card1.getValue() > card3.getValue()) {
-                System.out.println(bot1.getName() + " Забрал взятку ");
+                log.info(bot1.getName() + " Забрал взятку ");
                 bot1.setKolvovziatok(bot1.getKolvovziatok() + 1);
                 bot1.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
                 bot3.setWinnerOneStep(false);
             }
             if (card1.getValue() < card3.getValue()) {
-                System.out.println(bot3.getName() + " Забрал взятку ");
+                log.info(bot3.getName() + " Забрал взятку ");
                 bot3.setKolvovziatok(bot3.getKolvovziatok() + 1);
                 bot3.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
@@ -182,14 +182,14 @@ public class Unpacking implements GameStrategy {
         }
         if (card1.getColor() == card2.getColor() & card1.getColor() != card3.getColor()) {
             if (card1.getValue() > card2.getValue()) {
-                System.out.println(bot1.getName() + " Забрал взятку ");
+                log.info(bot1.getName() + " Забрал взятку ");
                 bot1.setKolvovziatok(bot1.getKolvovziatok() + 1);
                 bot1.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
                 bot3.setWinnerOneStep(false);
             }
             if (card1.getValue() < card2.getValue()) {
-                System.out.println(bot2.getName() + " Забрал взятку ");
+                log.info(bot2.getName() + " Забрал взятку ");
                 bot2.setKolvovziatok(bot2.getKolvovziatok() + 1);
                 bot2.setWinnerOneStep(true);
                 bot3.setWinnerOneStep(false);
@@ -197,7 +197,7 @@ public class Unpacking implements GameStrategy {
             }
         }
         if (card1.getColor() != card2.getColor() & card1.getColor() != card3.getColor()) {
-            System.out.println(bot1.getName() + " Забрал взятку ");
+            log.info(bot1.getName() + " Забрал взятку ");
             bot1.setKolvovziatok(bot1.getKolvovziatok() + 1);
             bot1.setWinnerOneStep(true);
             bot2.setWinnerOneStep(false);
@@ -214,7 +214,7 @@ public class Unpacking implements GameStrategy {
         card1.setColor(bot1.getCards().get(0).getColor());
         card1.setValue(bot1.getCards().get(0).getValue());
         bot1.getCards().remove(0);
-        System.out.println(bot1.getName() + " Пололожил " + card1.getCard(card1));
+        log.info(bot1.getName() + " Пололожил " + card1.getCard(card1));
         int i = 0;
         first:
         {
@@ -234,7 +234,7 @@ public class Unpacking implements GameStrategy {
         card2.setColor(bot2.getCards().get(i).getColor());
         card2.setValue(bot2.getCards().get(i).getValue());
         bot2.getCards().remove(i);
-        System.out.println(bot2.getName() + " Пололожил " + card2.getCard(card2));
+        log.info(bot2.getName() + " Пололожил " + card2.getCard(card2));
         int k = 0;
         second:
         {
@@ -253,25 +253,25 @@ public class Unpacking implements GameStrategy {
         card3.setColor(bot3.getCards().get(k).getColor());
         card3.setValue(bot3.getCards().get(k).getValue());
         bot3.getCards().remove(k);
-        System.out.println(bot3.getName() + " Пололожил " + card3.getCard(card3));
+        log.info(bot3.getName() + " Пололожил " + card3.getCard(card3));
 
         if (card1.getColor() == card2.getColor() & card1.getColor() == card3.getColor()) {
             if (card1.getValue() > card2.getValue() & card1.getValue() > card3.getValue()) {
-                System.out.println(bot1.getName() + " Забрал взятку ");
+                log.info(bot1.getName() + " Забрал взятку ");
                 bot1.setKolvovziatok(bot1.getKolvovziatok() + 1);
                 bot1.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
                 bot3.setWinnerOneStep(false);
             }
             if (card2.getValue() > card1.getValue() & card2.getValue() > card3.getValue()) {
-                System.out.println(bot2.getName() + " Забрал взятку ");
+                log.info(bot2.getName() + " Забрал взятку ");
                 bot2.setKolvovziatok(bot2.getKolvovziatok() + 1);
                 bot2.setWinnerOneStep(true);
                 bot1.setWinnerOneStep(false);
                 bot3.setWinnerOneStep(false);
             }
             if (card3.getValue() > card1.getValue() & card3.getValue() > card2.getValue()) {
-                System.out.println(bot3.getName() + " Забрал взятку ");
+                log.info(bot3.getName() + " Забрал взятку ");
                 bot3.setKolvovziatok(bot3.getKolvovziatok() + 1);
                 bot3.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
@@ -280,14 +280,14 @@ public class Unpacking implements GameStrategy {
         }
         if (card1.getColor() != card2.getColor() & card1.getColor() == card3.getColor()) {
             if (card1.getValue() > card3.getValue()) {
-                System.out.println(bot1.getName() + " Забрал взятку ");
+                log.info(bot1.getName() + " Забрал взятку ");
                 bot1.setKolvovziatok(bot1.getKolvovziatok() + 1);
                 bot1.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
                 bot3.setWinnerOneStep(false);
             }
             if (card1.getValue() < card3.getValue()) {
-                System.out.println(bot3.getName() + " Забрал взятку ");
+                log.info(bot3.getName() + " Забрал взятку ");
                 bot3.setKolvovziatok(bot3.getKolvovziatok() + 1);
                 bot3.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
@@ -296,14 +296,14 @@ public class Unpacking implements GameStrategy {
         }
         if (card1.getColor() == card2.getColor() & card1.getColor() != card3.getColor()) {
             if (card1.getValue() > card2.getValue()) {
-                System.out.println(bot1.getName() + " Забрал взятку ");
+                log.info(bot1.getName() + " Забрал взятку ");
                 bot1.setKolvovziatok(bot1.getKolvovziatok() + 1);
                 bot1.setWinnerOneStep(true);
                 bot2.setWinnerOneStep(false);
                 bot3.setWinnerOneStep(false);
             }
             if (card1.getValue() < card2.getValue()) {
-                System.out.println(bot2.getName() + " Забрал взятку ");
+                log.info(bot2.getName() + " Забрал взятку ");
                 bot2.setKolvovziatok(bot2.getKolvovziatok() + 1);
                 bot2.setWinnerOneStep(true);
                 bot3.setWinnerOneStep(false);
@@ -311,7 +311,7 @@ public class Unpacking implements GameStrategy {
             }
         }
         if (card1.getColor() != card2.getColor() & card1.getColor() != card3.getColor()) {
-            System.out.println(bot1.getName() + " Забрал взятку ");
+            log.info(bot1.getName() + " Забрал взятку ");
             bot1.setKolvovziatok(bot1.getKolvovziatok() + 1);
             bot1.setWinnerOneStep(true);
             bot2.setWinnerOneStep(false);
@@ -323,9 +323,6 @@ public class Unpacking implements GameStrategy {
     // очки в гору или пулю
     private void pointsForUnpacking(Bot bot1, Bot bot2, Bot bot3) {
         Stream<Integer> str = Stream.of(bot1.getKolvovziatok(), bot2.getKolvovziatok(),bot3.getKolvovziatok());
-        System.out.println(bot1.getKolvovziatok());
-        System.out.println(bot2.getKolvovziatok());
-        System.out.println(bot3.getKolvovziatok());
         int min= str.min(Integer::compareTo).get();
         if(bot1.getKolvovziatok()==0) {bot1.setBullet(bot1.getBullet()+1);}
         if(bot2.getKolvovziatok()==0) {bot2.setBullet(bot1.getBullet()+1);}

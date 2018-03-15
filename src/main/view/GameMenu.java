@@ -9,7 +9,7 @@ public class GameMenu {
     private Bot bot1 = new Bot();
     private Bot bot2 = new Bot();
     private Bot bot3 = new Bot();
-    private Distributor distributor = new Distributor();
+    public Distributor distributor = new Distributor();
     private ProcessOfTrade processOfTrade = new ProcessOfTrade();
     private ProcessOfTradeTour2 processOfTradeTour2 = new ProcessOfTradeTour2();
     private Deck deck = new Deck();
