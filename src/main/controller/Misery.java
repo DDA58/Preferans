@@ -12,6 +12,9 @@ public class Misery implements GameStrategy {
     @Override
     public void run(Distributor distributor, Bot bot1, Bot bot2, Bot bot3, Logger log) {
         log.info("Играем в МИЗЕР");
+        bot1.setKolvovziatok(0);
+        bot2.setKolvovziatok(0);
+        bot3.setKolvovziatok(0);
         getPrikupAndRemove(distributor, bot1, bot2, bot3);
         processOfGame(bot1, bot2, bot3, log);
         if(bot1.getStrategyBot2().equals("Misery")) {
@@ -30,13 +33,13 @@ public class Misery implements GameStrategy {
         for (int mmm = 0; mmm < 10; ) {
             label:
             {
-                if (mmm == 0) {
+                /*if (mmm == 0) {
                     log.info("---------------------------");
                     log.info("Raund " + mmm);
                     actionOfBots(bot1, bot2, bot3, log);
                     mmm++;
                     break label;
-                }
+                }*/
                 if (bot1.isWinnerOneStep()) {
                     log.info("---------------------------");
                     log.info("Raund " + mmm);

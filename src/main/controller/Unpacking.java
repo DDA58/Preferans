@@ -11,6 +11,9 @@ public class Unpacking implements GameStrategy {
     @Override
     public void run(Distributor distributor, Bot bot1, Bot bot2, Bot bot3, Logger log) {
         log.info("Играем РАСПАС");
+        bot1.setKolvovziatok(0);
+        bot2.setKolvovziatok(0);
+        bot3.setKolvovziatok(0);
     processOfGame(distributor, bot1, bot2, bot3, log);
     pointsForUnpacking(bot1, bot2, bot3);
     }

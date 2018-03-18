@@ -58,6 +58,9 @@ public class Contract implements GameStrategy {
     public void run(Distributor distributor, Bot bot1, Bot bot2, Bot bot3, Logger log) {
         loadKozir(bot1, bot2, bot3, distributor);
         podschetKozirVNachale(bot1, bot2, bot3);
+        bot1.setKolvovziatok(0);
+        bot2.setKolvovziatok(0);
+        bot3.setKolvovziatok(0);
 
         if (bot2.getStrategyBot2().equals("Contract")) {
             bot2.setZayvkaPriKontrakte("Contract");
@@ -241,13 +244,13 @@ public class Contract implements GameStrategy {
     private void processOfGame (Bot bot1, Bot bot2, Bot bot3, Logger log) {
     for (int mmm = 0; mmm < 10;) {
         label: {
-            if (mmm == 0) {
+            /*if (mmm == 0) {
                 log.info("---------------------------");
                 System.out.println("Раунд " + mmm);
                 actionOfBots(bot1, bot2, bot3, log);
                 mmm++;
                 break label;
-            }
+            }*/
             if (bot1.isWinnerOneStep()) {
                 log.info("---------------------------");
                 System.out.println("Раунд " + mmm);

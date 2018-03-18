@@ -1,11 +1,12 @@
 package main.controller;
+import org.apache.log4j.Logger;
 
 import main.model.Bot;
 
 import java.util.stream.Stream;
 
 public class GetResultInVist_Winner {
-    public  void resultInVist (Bot bot1, Bot bot2, Bot bot3) {
+    public  void resultInVist (Bot bot1, Bot bot2, Bot bot3, Logger log) {
 
         Stream<Integer> str = Stream.of(bot1.getBullet(), bot2.getBullet(),bot3.getBullet());
         int maxBul = str.max(Integer::compareTo).get();
@@ -58,28 +59,29 @@ public class GetResultInVist_Winner {
         bot1.setOwnVista(oootherVist1_2+oootherVist1_3);
         bot2.setOwnVista(oootherVist2_1+oootherVist2_3);
         bot3.setOwnVista(oootherVist3_1+oootherVist3_2);
-        System.out.println("Вистов у "+bot1.getName()+": "+bot1.getOwnVista());
-        System.out.println("Вистов у "+bot2.getName()+": "+bot2.getOwnVista());
-        System.out.println("Вистов у "+bot3.getName()+": "+bot3.getOwnVista());
+        log.info("Вистов у "+bot1.getName()+": "+bot1.getOwnVista());
+        log.info("Вистов у "+bot2.getName()+": "+bot2.getOwnVista());
+        log.info("Вистов у "+bot3.getName()+": "+bot3.getOwnVista());
         Stream<Double> str3 = Stream.of(bot1.getOwnVista(), bot2.getOwnVista(),bot3.getOwnVista());
         double maxOwnVist = str3.max(Double::compareTo).get();
         if(bot1.getOwnVista()==maxOwnVist&bot2.getOwnVista()!=maxOwnVist&bot3.getOwnVista()!=maxOwnVist) {
-            System.out.println(bot1.getName()+" Победил ");
+            log.info(bot1.getName()+" Победил ");
         }
         if(bot2.getOwnVista()==maxOwnVist&bot1.getOwnVista()!=maxOwnVist&bot3.getOwnVista()!=maxOwnVist) {
-            System.out.println(bot2.getName()+" Победил ");
+            log.info(bot2.getName()+" Победил ");
         }
         if(bot3.getOwnVista()==maxOwnVist&bot2.getOwnVista()!=maxOwnVist&bot1.getOwnVista()!=maxOwnVist) {
-            System.out.println(bot3.getName()+" Победил ");
+            log.info(bot3.getName()+" Победил ");
         }
         if(bot1.getOwnVista()==maxOwnVist&bot2.getOwnVista()==maxOwnVist) {
-            System.out.println("Ничья между: "+bot1.getName()+" и "+bot2.getName());
+            log.info("Ничья между: "+bot1.getName()+" и "+bot2.getName());
         }
         if(bot1.getOwnVista()==maxOwnVist&bot3.getOwnVista()==maxOwnVist) {
-            System.out.println("Ничья между: "+bot1.getName()+" и "+bot3.getName());
+            log.info("Ничья между: "+bot1.getName()+" и "+bot3.getName());
         }
         if(bot3.getOwnVista()==maxOwnVist&bot2.getOwnVista()==maxOwnVist) {
-            System.out.println("Ничья между: "+bot2.getName()+" и "+bot3.getName());
+            log.info("Ничья между: "+bot2.getName()+" и "+bot3.getName());
         }
     }
+
 }
